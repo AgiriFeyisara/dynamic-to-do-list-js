@@ -1,68 +1,37 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const addButton = document.getElementById("add-task-btn");
+  const taskInput = document.getElementById("task-input");
+  const taskList = document.getElementById("task-list");
 
-#todo-app {
-    width: 100%;
-    max-width: 400px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
+  //   This function is to add task
+  function addTask() {
+    const taskText = taskInput.value.trim();
+  }
+  if (taskText === "") {
+    alert("Please enter a task.");
+    return;
+  }
 
-#task-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
+  //  This will create a new li element
+  const li = document.createElement("li");
+  li.textContent = "taskText";
 
-#add-task-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "remove";
+  removeBtn.className = "remove-btn";
 
-#add-task-btn:hover {
-    background-color: #0056b3;
-}
+  removeBtn.onclick = () => {
+    taskList.removeChild(li);
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
+    taskInput.value = "";
+  };
 
-li {
-    background-color: #eeeeee;
-    margin-top: 8px;
-    padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+  addButton.addEventListener("click", addTask);
 
-.remove-btn {
-    cursor: pointer;
-    background-color: #ff6347;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-}
-
-.remove-btn:hover {
-    background-color: #d9534f;
-}
+  taskInput.addEventListener("keypress", (event) => {
+    if (event.key === "enter") {
+      addTask();
+    }
+  });
+  addTask();
+});
