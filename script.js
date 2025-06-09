@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //   This function is to add task
   function addTask() {
     const taskText = taskInput.value.trim();
-  }
-  if (taskText === "") {
-    alert("Please enter a task.");
-    return;
+    if (taskText === "") {
+      alert("Please enter a task.");
+      return;
+    }
   }
 
   //  This will create a new li element
